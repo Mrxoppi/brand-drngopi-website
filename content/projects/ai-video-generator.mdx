@@ -1,0 +1,37 @@
+---
+title: "AI Video Generator"
+description: "Pipeline tự động tạo video từ chủ đề → AI viết kịch bản → TTS → render"
+date: "2026-09-13"
+tech: ["Python", "Claude AI", "Edge TTS", "FFmpeg", "WebSocket"]
+result: "30+ video/tháng với 0 giờ manual work"
+---
+
+## Ý tưởng
+
+Tạo nội dung video YouTube/Facebook tốn nhiều thời gian: viết kịch bản, thu âm, ghép hình. AI có thể tự động hóa toàn bộ pipeline này.
+
+## Kiến trúc
+
+```
+Chủ đề → Claude AI viết kịch bản → Edge TTS thu âm (vi-VN-HoaiMyNeural)
+       → FFmpeg ghép hình + phụ đề → Output video MP4
+```
+
+**Agents:**
+- `researcher.py` — tìm kiếm thông tin về chủ đề
+- `scriptwriter.py` — viết kịch bản theo domain
+- `qa_agent.py` — kiểm tra chất lượng
+- `topic_generator.py` — tự động chọn chủ đề theo lịch
+- `daily_runner.py` — orchestrator chạy 7:00 AM hàng ngày
+
+**7 domains xoay vòng:** ai-tech | sức-khỏe | kinh-doanh | giáo-dục | du-lịch | thể-thao | công-nghệ
+
+## Trạng thái hiện tại
+
+Dự án đang tạm gác để refactor: thay template HTML bằng Pexels API lấy stock media theo domain. Hướng đến video chất lượng cao hơn, không phải slideshow tĩnh.
+
+## Kết quả (phase 1)
+
+- ✅ Chạy tự động 7:00 AM daily
+- ✅ TTS tiếng Việt chất lượng cao (HoaiMyNeural)
+- ✅ Output: `publish-ready/<project>/`

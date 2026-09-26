@@ -1,0 +1,27 @@
+---
+title: "CBAM Dashboard"
+description: "Dashboard quản lý báo cáo carbon (CBAM) cho nhà máy thép Vĩnh Thành"
+date: "2026-08-01"
+tech: ["Python", "Flask", "SQL Server", "Chart.js"]
+result: "Giảm từ 3 ngày xuống 2 giờ cho báo cáo CBAM hàng quý"
+featured: true
+---
+
+## Bài toán
+
+Nhà máy thép Vĩnh Thành phải nộp báo cáo **CBAM (Carbon Border Adjustment Mechanism)** cho thị trường EU hàng quý. Trước đây, quy trình thủ công mất 2–3 ngày: tra cứu dữ liệu sản xuất từ SQL Server, tính SEE (Specific Embedded Emissions) bằng Excel, rồi format báo cáo.
+
+## Giải pháp
+
+Xây dựng dashboard Flask với:
+
+- **Auto-query SQL Server**: Lấy dữ liệu TCSX (tấn sản phẩm), mã thép, xuất xứ từ database trực tiếp
+- **Tính SEE tự động**: SEE = 0.857 tCO₂e/t (lợi thế 61% so với default EU 2.20)
+- **5 sub-tab**: Overview | Sản xuất | Nhập khẩu | Phân tích | Export
+- **Export Excel**: Báo cáo CBAM chuẩn format EU
+
+## Kết quả
+
+- ✅ Thời gian báo cáo: **3 ngày → 2 giờ**
+- ✅ SEE thực tế 0.857 vs default 2.20 — tiết kiệm chi phí CBAM đáng kể
+- ✅ Chạy production tại `http://localhost:8080`

@@ -1,0 +1,34 @@
+---
+title: "Obsidian Knowledge System"
+description: "Hệ thống tri thức cá nhân 3 lớp: Zettelkasten + AI extraction + daily digest"
+date: "2026-09-13"
+tech: ["Obsidian", "Python", "Claude AI", "OpenJarvis"]
+result: "700+ notes có cấu trúc, knowledge accessible trong < 10 giây"
+---
+
+## Vấn đề
+
+Sau mỗi dự án, kiến thức bị phân tán: ghi chú rải rác, không tìm lại được, phải học lại từ đầu. "Second brain" cần hoạt động như một bộ nhớ thực sự.
+
+## Kiến trúc 3 lớp
+
+### Lớp 1: Obsidian Vault (lưu trữ)
+- Zettelkasten structure: Daily-Logs / Knowledge / Projects / People
+- Atomic notes với bidirectional links
+- Templates chuẩn cho entities, concepts, decisions
+
+### Lớp 2: AI Extraction Pipeline
+- `hermes-extract` chạy 23:00 daily: đọc session history → extract facts → ghi vào Obsidian
+- Script `sync-memory-to-obsidian.ps1` — sync OpenClaw memory files vào vault
+- OpenJarvis connector đọc markdown files → knowledge pipeline
+
+### Lớp 3: Daily Digest
+- `hermes-brief` chạy 8:00 AM: đọc history → tạo morning brief → gửi về main session
+- Kết nối Second Brain với workflow hàng ngày
+
+## Kết quả
+
+- ✅ **700+ notes** có cấu trúc, liên kết với nhau
+- ✅ Query bất kỳ kiến thức trong **< 10 giây**
+- ✅ Mọi dự án, quyết định, bài học đều được capture tự động
+- ✅ AI agent có context đầy đủ qua memory system

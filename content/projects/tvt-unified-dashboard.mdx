@@ -1,0 +1,36 @@
+---
+title: "TVT Unified Dashboard"
+description: "Enterprise data platform tích hợp toàn bộ dữ liệu Thép Vĩnh Thành"
+date: "2026-09-22"
+tech: ["Python", "Flask", "SQL Server", "DeepSeek AI", "NSSM"]
+result: "Một URL duy nhất cho toàn bộ dữ liệu công ty; giảm 80% thời gian truy vấn"
+featured: true
+---
+
+## Bài toán
+
+Thép Vĩnh Thành có dữ liệu phân tán: phòng kế toán dùng file Excel, kho dùng phần mềm nội bộ, báo cáo CBAM là quy trình riêng. Không có một nơi nào để xem toàn bộ KPI của công ty.
+
+## Giải pháp
+
+**Unified Dashboard** — một web app duy nhất tích hợp:
+
+| Tab | Nội dung |
+|-----|---------|
+| KPI | Doanh thu, sản lượng, tồn kho real-time |
+| Tra cứu | Đơn hàng / NV / Phòng ban / Chấm công |
+| Báo cáo SX | TCSX / mác thép / xuất xứ / KH / NV KD |
+| CBAM | Đầy đủ 5 sub-tab + export Excel |
+| Giá sàn | GVTH theo từng mác |
+| Hỏi dữ liệu | **Text-to-SQL** với DeepSeek AI |
+
+## Highlight: Text-to-SQL
+
+Nhân viên gõ câu hỏi tiếng Việt như "Tháng 8 bán được bao nhiêu tấn thép CT3?" → AI tự viết SQL và trả kết quả.
+
+## Kết quả
+
+- ✅ Deploy như **Windows Service** (NSSM, autostart)
+- ✅ Port 5001, accessible qua Tailscale `100.85.159.9:5001`
+- ✅ Auth login `tvt2026`
+- ✅ Giảm **80% thời gian** truy vấn dữ liệu hàng ngày
