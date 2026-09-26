@@ -60,7 +60,11 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </div>
     );
-  } catch {
-    notFound();
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    if (message.includes("Invalid slug") || message.includes("ENOENT")) {
+      notFound();
+    }
+    throw err;
   }
 }

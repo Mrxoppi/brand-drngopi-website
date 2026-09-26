@@ -108,22 +108,22 @@ export default function Hero() {
             <Mail size={18} /> Liên hệ
           </a>
         </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#475569] text-xs"
-        >
-          <span>Cuộn xuống</span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-0.5 h-6 bg-gradient-to-b from-[#475569] to-transparent"
-          />
-        </motion.div>
       </div>
+
+      {/* Scroll indicator — anchored to section bottom */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#475569] text-xs"
+      >
+        <span>Cuộn xuống</span>
+        <motion.div
+          animate={{ y: [0, 6, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="w-0.5 h-6 bg-gradient-to-b from-[#475569] to-transparent"
+        />
+      </motion.div>
     </section>
   );
 }

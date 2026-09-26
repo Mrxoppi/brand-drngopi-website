@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion } from "framer-motion";
 
 const skillGroups = [
@@ -114,23 +115,31 @@ export default function Skills() {
                     key={skill}
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
+                    whileHover={{ scale: 1.07 }}
                     viewport={{ once: true }}
                     transition={{ delay: gi * 0.05 + si * 0.03 }}
-                    className="px-3.5 py-1.5 rounded-lg text-sm font-medium border transition-all duration-200 hover:scale-105 cursor-default"
-                    style={{
-                      borderColor: `${group.color}25`,
-                      backgroundColor: `${group.color}08`,
-                      color: "#94a3b8",
+                    className="px-3.5 py-1.5 rounded-lg text-sm font-medium border cursor-default"
+                    style={
+                      {
+                        "--clr": group.color,
+                        borderColor: `${group.color}25`,
+                        backgroundColor: `${group.color}08`,
+                        color: "#94a3b8",
+                        transition:
+                          "color 0.15s, border-color 0.15s, background-color 0.15s",
+                      } as React.CSSProperties
+                    }
+                    onHoverStart={(e) => {
+                      const el = e.target as HTMLElement;
+                      el.style.color = group.color;
+                      el.style.borderColor = `${group.color}50`;
+                      el.style.backgroundColor = `${group.color}15`;
                     }}
-                    onMouseEnter={(e) => {
-                      (e.target as HTMLElement).style.color = group.color;
-                      (e.target as HTMLElement).style.borderColor = `${group.color}50`;
-                      (e.target as HTMLElement).style.backgroundColor = `${group.color}15`;
-                    }}
-                    onMouseLeave={(e) => {
-                      (e.target as HTMLElement).style.color = "#94a3b8";
-                      (e.target as HTMLElement).style.borderColor = `${group.color}25`;
-                      (e.target as HTMLElement).style.backgroundColor = `${group.color}08`;
+                    onHoverEnd={(e) => {
+                      const el = e.target as HTMLElement;
+                      el.style.color = "#94a3b8";
+                      el.style.borderColor = `${group.color}25`;
+                      el.style.backgroundColor = `${group.color}08`;
                     }}
                   >
                     {skill}

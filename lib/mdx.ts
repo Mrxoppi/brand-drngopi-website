@@ -40,11 +40,20 @@ export function getBlogSlugs(): string[] {
   return getFilesFromDir("blog");
 }
 
+function validateSlug(slug: string, subDir: string): string {
+  const resolved = path.resolve(contentDir, subDir, `${slug}.mdx`);
+  const expected = path.resolve(contentDir, subDir) + path.sep;
+  if (!resolved.startsWith(expected)) {
+    throw new Error("Invalid slug");
+  }
+  return resolved;
+}
+
 export function getProjectBySlug(slug: string): {
   meta: ProjectMeta;
   content: string;
 } {
-  const filePath = path.join(contentDir, "projects", `${slug}.mdx`);
+  const filePath = validateSlug(slug, "projects");
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
   return {
@@ -57,7 +66,7 @@ export function getBlogBySlug(slug: string): {
   meta: BlogMeta;
   content: string;
 } {
-  const filePath = path.join(contentDir, "blog", `${slug}.mdx`);
+  const filePath = validateSlug(slug, "blog");
   const raw = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(raw);
   return {
@@ -66,14 +75,33 @@ export function getBlogBySlug(slug: string): {
   };
 }
 
+function parseDateSafe(d: string): number {
+  const ts = Date.parse(d);
+  return isNaN(ts) ? 0 : ts;
+}
+
 export function getAllProjects(): ProjectMeta[] {
-  return getProjectSlugs()
-    .map((slug) => getProjectBySlug(slug).meta)
-    .sort((a, b) => (a.date > b.date ? -1 : 1));
+  const slugs = getProjectSlugs();
+  const results: ProjectMeta[] = [];
+  for (const slug of slugs) {
+    try {
+      results.push(getProjectBySlug(slug).meta);
+    } catch {
+      // skip malformed MDX files
+    }
+  }
+  return results.sort((a, b) => parseDateSafe(b.date) - parseDateSafe(a.date));
 }
 
 export function getAllBlogPosts(): BlogMeta[] {
-  return getBlogSlugs()
-    .map((slug) => getBlogBySlug(slug).meta)
-    .sort((a, b) => (a.date > b.date ? -1 : 1));
+  const slugs = getBlogSlugs();
+  const results: BlogMeta[] = [];
+  for (const slug of slugs) {
+    try {
+      results.push(getBlogBySlug(slug).meta);
+    } catch {
+      // skip malformed MDX files
+    }
+  }
+  return results.sort((a, b) => parseDateSafe(b.date) - parseDateSafe(a.date));
 }
