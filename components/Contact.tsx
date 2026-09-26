@@ -28,8 +28,8 @@ const socials = [
   {
     icon: Link2,
     label: "GitHub",
-    href: "https://github.com/huytranvan2010",
-    value: "huytranvan2010",
+    href: "https://github.com/Mrxoppi",
+    value: "Mrxoppi",
     color: "#94a3b8",
   },
 ];
