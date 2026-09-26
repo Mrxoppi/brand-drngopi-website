@@ -5,17 +5,21 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #0a0f1e;
-  --surface: #111827;
+  --background: #080d1a;
+  --surface: #0d1424;
+  --surface-2: #111d30;
   --primary: #0ea5e9;
   --accent: #22d3ee;
-  --text: #f8fafc;
-  --muted: #94a3b8;
-  --border: #1e293b;
-  --foreground: #f8fafc;
-  --card: #111827;
-  --card-foreground: #f8fafc;
-  --radius: 0.625rem;
+  --lime: #d4ff3c;
+  --text: #e8f0fe;
+  --muted: #8ba3c4;
+  --border: #1a2840;
+  --foreground: #e8f0fe;
+  --card: #0d1424;
+  --card-foreground: #e8f0fe;
+  --radius: 0.5rem;
+  --font-display: var(--font-syne), "Syne", system-ui, sans-serif;
+  --font-body: var(--font-mono), "IBM Plex Mono", monospace;
 }
 
 @theme inline {
@@ -44,41 +48,142 @@ html {
 body {
   background: var(--background);
   color: var(--text);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dot grid background */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, #1a2840 1px, transparent 1px);
+  background-size: 32px 32px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* Grain overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: -200%;
+  width: 400%;
+  height: 400%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 0;
+  animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-2%, -3%); }
+  20% { transform: translate(3%, 2%); }
+  30% { transform: translate(-1%, 4%); }
+  40% { transform: translate(4%, -1%); }
+  50% { transform: translate(-3%, 3%); }
+  60% { transform: translate(2%, -4%); }
+  70% { transform: translate(-4%, 1%); }
+  80% { transform: translate(1%, -2%); }
+  90% { transform: translate(-2%, 4%); }
+}
+
+main, header, footer, section, nav {
+  position: relative;
+  z-index: 1;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
 }
 
 ::selection {
-  background: #0ea5e920;
-  color: #22d3ee;
+  background: #d4ff3c30;
+  color: #d4ff3c;
 }
 
+/* Gradient text */
 .gradient-text {
+  background: linear-gradient(135deg, #0ea5e9 0%, #22d3ee 50%, #d4ff3c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-cool {
   background: linear-gradient(135deg, #0ea5e9, #22d3ee);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
+/* Cards */
 .glow-card {
-  border: 1px solid #0ea5e930;
-  box-shadow: 0 0 20px #0ea5e908;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
 }
 
 .glow-card:hover {
-  border-color: #22d3ee40;
-  box-shadow: 0 0 30px #22d3ee12;
+  border-color: #22d3ee30;
+  box-shadow: 0 0 0 1px #22d3ee18, 0 8px 32px #0ea5e910;
+  transform: translateY(-2px);
+}
+
+/* Horizontal rule */
+.section-line {
+  width: 2rem;
+  height: 2px;
+  background: linear-gradient(90deg, #0ea5e9, #d4ff3c);
+  border-radius: 1px;
+}
+
+/* Mono label */
+.label-mono {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Corner accent decoration */
+.corner-accent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-top: 1px solid #22d3ee50;
+  border-left: 1px solid #22d3ee50;
+}
+
+.corner-accent::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  border-bottom: 1px solid #0ea5e950;
+  border-right: 1px solid #0ea5e950;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0f1e;
+  background: var(--background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e293b;
-  border-radius: 3px;
+  background: var(--border);
+  border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #0ea5e940;
@@ -86,9 +191,9 @@ body {
 
 @layer base {
   * {
-    @apply border-[#1e293b];
+    @apply border-[#1a2840];
   }
   body {
-    @apply bg-[#0a0f1e] text-[#f8fafc];
+    @apply bg-[#080d1a] text-[#e8f0fe];
   }
 }

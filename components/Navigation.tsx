@@ -33,11 +33,11 @@ export default function Navigation() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a
-          href="/"
-          className="font-bold text-xl bg-gradient-to-r from-[#0ea5e9] to-[#22d3ee] bg-clip-text text-transparent"
-        >
-          Dr.NgoPi
+        <a href="/" className="flex items-center gap-2">
+          <span className="font-display font-bold text-lg text-[#e8f0fe]">
+            Dr.NgoPi
+          </span>
+          <span className="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-[#d4ff3c] animate-pulse" />
         </a>
 
         {/* Desktop */}
@@ -46,14 +46,14 @@ export default function Navigation() {
             <a
               key={l.href}
               href={l.href}
-              className="text-[#94a3b8] hover:text-[#22d3ee] transition-colors text-sm font-medium"
+              className="label-mono text-[#6b7f9a] hover:text-[#22d3ee] transition-colors"
             >
               {l.label}
             </a>
           ))}
           <a
             href="#contact"
-            className="px-4 py-2 bg-[#0ea5e9]/10 border border-[#0ea5e9]/30 text-[#0ea5e9] rounded-lg text-sm hover:bg-[#0ea5e9]/20 transition-colors"
+            className="px-4 py-2 border border-[#1a2840] text-[#8ba3c4] text-xs font-medium rounded-lg hover:border-[#0ea5e9]/40 hover:text-[#0ea5e9] transition-all"
           >
             Liên hệ ngay
           </a>
