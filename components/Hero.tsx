@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { ArrowRight, Mail } from "lucide-react";
 
 const roles = [
-  "Dược sĩ Lâm sàng",
-  "AI Engineer",
-  "Builder & Maker",
-  "Healthcare × Tech",
+  "Cử nhân Vật Lý",
+  "Sinh viên Dược K17",
+  "AI Builder & Maker",
+  "Vật Lý × Dược × AI",
 ];
 
 export default function Hero() {

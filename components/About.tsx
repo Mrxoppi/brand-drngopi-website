@@ -4,35 +4,41 @@ import { motion } from "framer-motion";
 
 const journey = [
   {
-    year: "2006–2011",
-    title: "Dược sĩ Đại học",
-    desc: "Tốt nghiệp Đại học Dược Hà Nội. Nền tảng khoa học chặt chẽ, tư duy phân tích từ dược lý.",
+    year: "~2007–2010",
+    title: "Đại học Vật Lý",
+    desc: "Tốt nghiệp cử nhân Vật Lý — tư duy phân tích, mô hình hóa từ nền khoa học cơ bản.",
     accent: "#0ea5e9",
   },
   {
-    year: "2011–2020",
-    title: "Dược lâm sàng",
-    desc: "Làm việc thực chiến tại cơ sở sản xuất — nhận ra dữ liệu đang bị lãng phí mỗi ngày.",
+    year: "2008",
+    title: "Chứng chỉ IT — iSPACE",
+    desc: "Computer Doctor (chuyên khoa PC) tại iSPACE IT Training Center & iCARE International IT Hospital.",
+    accent: "#0ea5e9",
+  },
+  {
+    year: "2013–2020",
+    title: "Nhân viên Thiết bị — THCS Đức Lập",
+    desc: "7 năm quản lý thiết bị giáo dục tại Đức Hòa, Long An. Nhận ra khoảng trống lớn giữa công nghệ và thực tiễn.",
     accent: "#22d3ee",
   },
   {
-    year: "2020–2023",
-    title: "Khám phá AI",
-    desc: "Tự học Python, ML, rồi LLM. Bắt đầu xây tool nhỏ giải quyết bài toán thực tế.",
+    year: "2020–nay",
+    title: "Dược Văn Bằng 2 (Lớp K17)",
+    desc: "Theo học ngành Dược — kết hợp nền tảng khoa học + kinh nghiệm thực chiến để hiểu sâu domain Y tế.",
     accent: "#22d3ee",
   },
   {
     year: "2024–nay",
-    title: "AI Engineer",
-    desc: "Build full-stack AI solutions: dashboard doanh nghiệp, automation pipeline, knowledge system.",
+    title: "AI Builder — Dr.NgoPi",
+    desc: "Build full-stack AI: dashboard doanh nghiệp (CBAM, sản xuất thép), automation pipeline, knowledge system.",
     accent: "#d4ff3c",
   },
 ];
 
 const stats = [
   { value: "5+", label: "Dự án production" },
-  { value: "10+", label: "Năm domain expertise" },
-  { value: "3", label: "Lĩnh vực AI đã triển khai" },
+  { value: "42", label: "Tuổi đời, 20+ năm tự học" },
+  { value: "3", label: "Lĩnh vực: Vật lý · Dược · AI" },
 ];
 
 export default function About() {
@@ -70,18 +76,23 @@ export default function About() {
               <strong className="text-[#e8f0fe] font-semibold">
                 Ngô Hoài Hận
               </strong>{" "}
-              — Dược sĩ với hơn 10 năm kinh nghiệm, hiện đang chuyển sang xây
-              dựng các hệ thống AI thực tế cho doanh nghiệp.
+              — sinh năm 1984 tại Đức Hòa, Long An. Cử nhân Vật Lý, đang học
+              Dược Văn Bằng 2, và là người tự xây dựng các hệ thống AI thực tế.
             </p>
             <p className="text-[#8ba3c4] leading-relaxed mb-4 text-sm md:text-base">
-              Điều tôi mang lại không chỉ là code, mà là{" "}
-              <span className="text-[#22d3ee]">sự hiểu biết sâu về domain</span>{" "}
-              — từ quy trình sản xuất, CBAM/carbon reporting, đến quản lý kho
-              hàng.
+              Hành trình của tôi là: Vật Lý → Thiết bị trường học → Dược học →
+              AI Builder.{" "}
+              <span className="text-[#22d3ee]">
+                Không thẳng, nhưng mỗi bước đều để lại domain knowledge thực
+                chất
+              </span>{" "}
+              — từ cơ sở hạ tầng giáo dục, quản lý dữ liệu sản xuất thép, đến
+              CBAM carbon reporting.
             </p>
             <p className="text-[#8ba3c4] leading-relaxed mb-10 text-sm md:text-base">
-              Mỗi dự án xuất phát từ một bài toán thực tế, và kết thúc bằng một
-              giải pháp có thể chạy sản xuất.
+              Mỗi dự án xuất phát từ một bài toán thực tế — dashboard, pipeline
+              AI, knowledge system — và kết thúc bằng giải pháp đang chạy
+              production.
             </p>
 
             {/* Stats */}

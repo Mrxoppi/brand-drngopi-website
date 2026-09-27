@@ -14,16 +14,16 @@ const socials = [
   {
     icon: ExternalLink,
     label: "Facebook",
-    href: "https://facebook.com/DrNgoPi",
-    value: "Dr.NgoPi",
+    href: "https://www.facebook.com/share/1DZCpwQZxh/",
+    value: "Ngô Hoài Hận",
     color: "#1877f2",
   },
   {
     icon: XIcon,
     label: "X (Twitter)",
-    href: "https://twitter.com/ngohoaihan1984",
-    value: "@ngohoaihan1984",
-    color: "#1da1f2",
+    href: "https://x.com/mrxoppi",
+    value: "@mrxoppi",
+    color: "#e2e8f0",
   },
   {
     icon: Link2,
