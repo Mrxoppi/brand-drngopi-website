@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Syne, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -15,6 +15,12 @@ const ibmMono = IBM_Plex_Mono({
   display: "swap",
   weight: ["300", "400", "500", "600"],
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: "Dr.NgoPi — Dược sĩ × Kỹ sư AI",
@@ -53,8 +59,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="vi" className={`${syne.variable} ${ibmMono.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-[#0a0f1e] text-[#f8fafc]">
+    <html lang="vi" className={`${syne.variable} ${ibmMono.variable} h-full antialiased overflow-x-hidden`}>
+      <body className="min-h-full flex flex-col bg-[#0a0f1e] text-[#f8fafc] overflow-x-hidden">
         {children}
       </body>
     </html>
